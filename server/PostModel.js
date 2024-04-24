@@ -34,7 +34,6 @@ const PostSchima = new mongoose.Schema({
         require:true,
         type:String
     }
-    
 })
 
 

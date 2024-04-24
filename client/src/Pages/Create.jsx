@@ -61,17 +61,13 @@ const Create = () => {
   //----------------------------------handle create
   const handleSubmit = (e) =>{
     e.preventDefault()
-
+    const isVideo= false
     setUsername(localStorage.getItem("username"))
     
     //----------------------------------------create pic
     const date = new Date()
     const modDate = date.toLocaleString()
-    
-    
-    
-
-    axios.post("http://localhost:3000/api/createPost",{postname,username,modDate})
+    axios.post("http://localhost:3000/api/createPost",{postname,username,modDate,isVideo})
     .then(()=>{
       alert("POST CREATED SUCCESS")
       // console.log(cookies)
@@ -85,6 +81,30 @@ const Create = () => {
     savepost()
     saveuserpic(postname)
     
+  }
+ 
+  //------------------------------------------handle video
+  const handleVideo = (e) =>{
+    e.preventDefault()
+    const isVideo= true
+    setUsername(localStorage.getItem("username"))
+    
+    //----------------------------------------create pic
+    const date = new Date()
+    const modDate = date.toLocaleString()
+    axios.post("http://localhost:3000/api/createPost",{postname,username,modDate,isVideo})
+    .then(()=>{
+      alert("POST CREATED SUCCESS")
+      // console.log(cookies)
+      
+    })
+    .catch((err)=>{
+      alert("POST NOT CREATED",err)
+    })
+
+    
+    savepost()
+    saveuserpic(postname)
   }
 
   useEffect(()=>{
@@ -127,6 +147,8 @@ const Create = () => {
 
 <div className="flex place-content-center">
 <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium text-2xl  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" onClick={handleSubmit}>Get Notished</button>
+
+<button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium text-2xl  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" onClick={handleVideo}>Handle Video</button>
 </div>
 
                     

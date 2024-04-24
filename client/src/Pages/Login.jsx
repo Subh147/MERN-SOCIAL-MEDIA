@@ -11,7 +11,8 @@ const Login = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        axios.post("http://localhost:3000/api/login",{username,password})
+        const isLoggedIn = true
+        axios.post("http://localhost:3000/api/login",{username,password,isLoggedIn})
         .then((e)=>{
             console.log(e.data);
             if(e.data === "Login successfully"){
@@ -20,11 +21,13 @@ const Login = () => {
             localStorage.setItem("username",username)
             }
             if(e.data ==="Login unsuccessfully"){
-                alert("Login unsuccessfully")
+                alert("Password Incorrect")
                 navigate("/login")
             }if(e.data ==="Invalid Username or Password"){
                 alert("Invalid Username or Password")
                 navigate("/login")
+            }if(e.data==="Invalid username or Password"){
+                alert("Username incorrect")
             }
         })
         .catch((err)=>{

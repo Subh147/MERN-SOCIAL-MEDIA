@@ -15,6 +15,7 @@ import Savepost from './Pages/Savepost'
 
 
 
+
 function App() {
   
 
@@ -32,7 +33,7 @@ function App() {
           <Route path='/login' element={<Login/>} />
           <Route path='/comment' element={<Comment/>} />
           
-
+          
 
           <Route path='/private' element={<CheckPrivateRoute/>} >
           <Route path='createpost' element={<Create/>} />

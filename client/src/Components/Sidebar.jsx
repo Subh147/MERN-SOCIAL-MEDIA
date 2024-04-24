@@ -1,6 +1,6 @@
 import { IoHomeSharp } from "react-icons/io5";
 import { MdAddCircleOutline } from "react-icons/md";
-import { FaSearch,FaBookmark } from "react-icons/fa";
+import { FaSearch,FaBookmark,FaVideo } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -21,7 +21,10 @@ const Sidebar = () => {
     const[userProfilePic,setUserProfilePic]=useState("");
     const [cookies, setCookie,removeCookie] = useCookies(['token']);
     const[savepostLength,setSavepostLength] = useState("")
+    const[localstorageusername,setlocalStorageusername]  = useState('') 
     console.log(cookies)
+
+    
 
     const navigate = useNavigate()
     const handleNavigate = () =>{
@@ -33,6 +36,15 @@ const Sidebar = () => {
     }
 
     const handleLogout = () =>{
+        const isLoggedIn = false
+        axios.post("http://localhost:3000/api/logout",{username,isLoggedIn})
+        .then(()=>{
+            console.log("succes to change isLoggedIn");
+            
+        })
+        .catch(()=>{
+            console.log("error in change in isLoggedIn");
+        })
         removeCookie("token")
         console.log("all ok")
         navigate("/login")
@@ -121,9 +133,11 @@ const Sidebar = () => {
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
                 <MdAddCircleOutline className="text-2xl "/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl text-gray-300">Create</h1>
+                <h1 className="text-2xl text-gray-300">Create Post</h1>
                 </span>
             </NavLink>
+
+            
 
 
             {/* <!-- menu item --> */}
@@ -151,6 +165,7 @@ const Sidebar = () => {
                 <p className="text-white text-xl">{savepostLength}</p>
                 </span>
             </NavLink>
+           
 
             
             </div>

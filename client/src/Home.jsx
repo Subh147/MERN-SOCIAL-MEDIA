@@ -7,6 +7,7 @@ import girl1 from "./pic/1990s beautiful blonde Supergirl.jpg"
 import Card from './Components/Card'
 import axios from 'axios'
 import { MdVerified } from "react-icons/md";
+import OnlineCard from './Components/OnlineCard'
 
 
 
@@ -50,14 +51,20 @@ const Home = () => {
   const handleLike = async (elem) => {
     console.log(elem._id)
     try {
-      const response = await axios.post(`http://localhost:3000/api/${elem._id}/like`);
+      const response = await axios.post(`http://localhost:3000/api/${elem._id}/like`,{username});
       setLikes(response.data.likes);
-      // const userliked = await axios.post(`http://localhost:3000/api/${elem.userName}/likeduser`)
-      // console.log("unliked",userliked)
+      console.log(response)
+      if(response.data==="You have already liked this post")
+      alert(response.data)
+     if(response.data==="Post liked successfully")
+     alert(response.data)
     } catch (error) {
       console.error(error);
     }
   };
+
+  
+  
 
   const handleComment = (elem) =>{
     console.log("this is comment",elem)
@@ -114,7 +121,7 @@ const Home = () => {
   return (
     <div className='h-[100%]'>
     
-      <section className='mx-80 flex  '>
+      <section className='mx-80 flex '>
         <div className='flex gap-2 pt-10 '>
         
           <img src={rabbit} alt="" className='w-24 h-24 rounded-full' />
@@ -127,7 +134,9 @@ const Home = () => {
           <img src={girl1} alt="" className='w-24 h-24 rounded-full' />
         </div>
         <div className='fixed right-0 top-0 pt-16  h-[100%] w-80 text-white'>
+        <OnlineCard/>
 
+        <div className='fixed bottom-0 ml-5 mb-5'>
         <ul className='flex gap-2'>
           <li>Home</li>
           <li>Home</li>
@@ -137,7 +146,9 @@ const Home = () => {
 
         <p>© 2024 NOSEBOOK FROM BISHAL</p>
         </div>
+        </div>
       </section>
+        
 
       <section className='pb-10 mx-[350px] '>
       {
@@ -145,10 +156,10 @@ const Home = () => {
         postData.reverse().map((elem,key)=>(
           // eslint-disable-next-line react/jsx-key
           <>
-          <div key={key} className="bg-slate-900 border rounded-sm w-[510px] my-10">
+          <div key={key} className="bg-slate-900 border rounded-sm w-[500px] my-10">
           {
             sharedUser &&
-            <div className="flex items-center px-4 py-3">
+            <div className="flex items-center px-4 py-3 ">
       {/* <img className="h-16 w-16 rounded-full" src={elem.userPic}/> */}
       <div className="ml-3 ">
       <div className='flex gap-1'>
@@ -205,6 +216,14 @@ const Home = () => {
         ))
       }
       
+
+      {/* ../public/images/file_1713710555956.mkv */}
+      <video width="500px" 
+               height="400px" 
+               controls="controls" autoPlay loop>
+        <source src="../public/images/file_1713710893127.mp4" 
+                type="video/mp4" />
+       </video>
         
       </section>
       

@@ -8,7 +8,11 @@ const userRegSchema = new mongoose.Schema({
         type:String,
         default: "noProfilrPic.jpg"
     },
-    token:String
+    token:String,
+    isLoggedIn:{
+        type : Boolean , 
+        default : false
+    }
 })
 
 const userRegModel = new mongoose.model("userreg",userRegSchema)

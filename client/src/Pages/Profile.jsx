@@ -37,6 +37,9 @@ const Profile = () => {
     })
   },[username])
   
+  const sendmessaage = (message) =>{
+    alert(message)
+  }
 
   const  handleClick = (post) =>{
     const pic = post.postImg
@@ -44,8 +47,10 @@ const Profile = () => {
     console.log(user)
     
       axios.post("http://localhost:3000/setuserpic",{pic,user})
-      .then(()=>{
+      .then((e)=>{
         console.log("Userpic send success")
+        sendmessaage(e.data)
+        document.location.reload(true)
       })
       .catch((err)=>{
         console.log(err)
