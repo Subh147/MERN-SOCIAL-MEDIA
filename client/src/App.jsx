@@ -11,7 +11,9 @@ import CheckPrivateRoute from './Pages/CheckPrivateRoute'
 import ChechPrivateRoute2 from './Pages/ChechPrivateRoute2'
 import Comment from './Pages/Comment'
 import CheckPrivateRoute3 from './Pages/CheckPrivateRoute3'
+import CheckPrivateRoute4 from './Pages/CheckPrivateRoute4'
 import Savepost from './Pages/Savepost'
+import Messenger  from './Pages/Messenger'
 
 
 
@@ -45,6 +47,10 @@ function App() {
 
           <Route path='/private3' element={<CheckPrivateRoute3/>} >
           <Route path='savepost' element={<Savepost/>} />
+          </Route>
+
+          <Route path='/private4' element={<CheckPrivateRoute4/>} >
+          <Route path='messenger' element={<Messenger/>} />
           </Route>
 
           

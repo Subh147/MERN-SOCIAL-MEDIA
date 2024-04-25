@@ -1,6 +1,6 @@
 import { IoHomeSharp } from "react-icons/io5";
 import { MdAddCircleOutline } from "react-icons/md";
-import { FaSearch,FaBookmark,FaVideo } from "react-icons/fa";
+import { FaSearch,FaBookmark,FaFacebookMessenger } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
@@ -162,7 +162,14 @@ const Sidebar = () => {
                 <FaBookmark className="text-2xl"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
                 <h1 className="text-2xl text-gray-300">Save Posts</h1>
-                <p className="text-white text-xl">{savepostLength}</p>
+                </span>
+            </NavLink>
+
+            <NavLink to="/private4" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
+                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
+                <FaFacebookMessenger className="text-2xl"/>
+                {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
+                <h1 className="text-2xl text-gray-300">Messenger</h1>
                 </span>
             </NavLink>
            
