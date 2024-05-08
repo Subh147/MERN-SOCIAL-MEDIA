@@ -1,7 +1,7 @@
 const Messenger = () => {
   return (
     <div>
-      <h1>Messenger</h1>
+      <a href="http://localhost:4000/">Click me</a>
     </div>
   )
 }

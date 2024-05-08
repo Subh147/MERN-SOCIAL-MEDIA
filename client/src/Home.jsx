@@ -8,6 +8,9 @@ import Card from './Components/Card'
 import axios from 'axios'
 import { MdVerified } from "react-icons/md";
 import OnlineCard from './Components/OnlineCard'
+import { FaVideo,FaSmile } from "react-icons/fa"
+import { IoMdPhotos } from "react-icons/io";
+import { FaGift } from "react-icons/fa6";
 
 
 
@@ -122,19 +125,39 @@ const Home = () => {
     <div className='h-[100%]'>
     
       <section className='mx-80 flex '>
-        <div className='flex gap-2 pt-10 '>
+      <div className='flex gap-3 pt-10 pl-28'>
         
-          <img src={rabbit} alt="" className='w-24 h-24 rounded-full' />
-          <img src={robot} alt="" className='w-24 h-24 rounded-full' />
-          <img src={girl} alt="" className='w-24 h-24 rounded-full' />
-          <img src={girl1} alt="" className='w-24 h-24 rounded-full' />
-          <img src={robot} alt="" className='w-24 h-24 rounded-full' />
-          <img src={rabbit} alt="" className='w-24 h-24 rounded-full' />
-          <img src={girl1} alt="" className='w-24 h-24 rounded-full' />
-          <img src={girl1} alt="" className='w-24 h-24 rounded-full' />
-        </div>
+          
+        <img src={robot} alt="" className='w-36 h-60 rounded-xl' />
+        <img src={girl} alt="" className='w-36 h-60 rounded-xl' />
+        <img src={rabbit} alt="" className='w-36 h-60 rounded-xl' />
+        <img src={girl1} alt="" className='w-36 h-60 rounded-xl' />
+        
+      </div>
         <div className='fixed right-0 top-0 pt-16  h-[100%] w-80 text-white'>
+        <div className='overflow-y-auto'>
         <OnlineCard/>
+        </div>
+
+        <div>
+          <hr className='my-6'/>
+          <div>
+            <h1 className='text-2xl'>Birthdays</h1>
+            <div className='flex mt-4 gap-4'>
+             <FaGift className='text-3xl text-pink-500'/>
+             <p>Tanushree Gharami has their Birthday today</p>
+            </div>
+          </div>
+          <hr className='my-6'/>
+        </div>
+
+        <div className='h-44 w-[500px] bg-slate-700 flex ml-[350px] my-6 rounded-xl'>
+      
+
+        <div>
+
+        </div>
+        </div>
 
         <div className='fixed bottom-0 ml-5 mb-5'>
         <ul className='flex gap-2'>
@@ -149,6 +172,36 @@ const Home = () => {
         </div>
       </section>
         
+      <div className='h-44 w-[500px] bg-slate-700 flex ml-[350px] my-16 rounded-xl'>
+      <div className=''>
+      <div className='flex mx-6 my-6 gap-2'>
+        <img className='w-[40px] h-[40px] rounded-full' src="https://imgs.search.brave.com/IZ7MIsbaofm0u4O4wocApdZPKT_2d0pLsAfOl1Nr0Bg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by91/c2VyLXByb2ZpbGUt/ZnJvbnQtc2lkZV8x/ODcyOTktMzk1OTUu/anBnP3NpemU9NjI2/JmV4dD1qcGc" alt="" />
+        <input type="text" className='h-12 w-[420px] bg-gray-600 rounded-full px-2 text-xl' placeholder='Whats on your mind?' />
+      </div>
+      <hr className='mx-6 flex gap-5' />
+        <div className='my-6 mx-24 flex gap-3 '>
+        <div className='flex'>
+          <FaVideo className='text-4xl text-red-400 '/>
+          <h1 className='mx-2 my-1.5 text-white'>Live Video</h1>
+          </div>
+
+          <div className='flex'>
+          <IoMdPhotos className='text-4xl text-green-400 '/>
+          <h1 className='mx-2 my-1.5 text-white'>Live Video</h1>
+          </div>
+          {/* FaSmile */}
+
+          <div className='flex'>
+          <FaSmile className='text-4xl text-yellow-400 '/>
+          <h1 className='mx-2 my-1.5 text-white'>Live Video</h1>
+          </div>
+        </div>
+        </div>
+        <div>
+        </div>
+        </div>
+
+
 
       <section className='pb-10 mx-[350px] '>
       {
