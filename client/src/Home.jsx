@@ -135,7 +135,9 @@ const Home = () => {
         
       </div>
         <div className='fixed right-0 top-0 pt-16  h-[100%] w-80 text-white'>
-        <div className='overflow-y-auto'>
+        
+        <h1 className='text-2xl'>Online</h1>
+        <div className='h-48 overflow-y-auto'>
         <OnlineCard/>
         </div>
 
@@ -270,13 +272,8 @@ const Home = () => {
       }
       
 
-      {/* ../public/images/file_1713710555956.mkv */}
-      <video width="500px" 
-               height="400px" 
-               controls="controls" autoPlay loop>
-        <source src="../public/images/file_1713710893127.mp4" 
-                type="video/mp4" />
-       </video>
+     
+      
         
       </section>
       

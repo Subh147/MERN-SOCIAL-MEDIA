@@ -28,12 +28,15 @@ const Savepost = () => {
 
   return (
     <div className="pb-10 mx-[350px] py-20 ">
+    <div className="text-2xl flex ml-56 text-white my-10">
+      <h1>Your Saved Post</h1>
+    </div>
       {
         
         postData.map((elem,key)=>(
           // eslint-disable-next-line react/jsx-key
           <>
-          <div key={key} className="bg-slate-900 border rounded-sm w-[510px] py-10">
+          <div key={key} className="bg-slate-900 border rounded-sm w-[510px] py-10 my-6">
     <div className="flex items-center px-4 py-3">
       <img className="h-16 w-16 rounded-full" src={`../public/images/${elem.userPic}`}/>
       <div className="ml-3 ">

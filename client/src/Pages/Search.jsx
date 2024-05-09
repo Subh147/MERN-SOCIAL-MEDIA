@@ -37,7 +37,7 @@ const Search = () => {
                 <p className="font-semibold text-xl">Search</p>
         </button>
     </div>
-    <div className="flex place-content-center">
+    <div className="flex flex-wrap place-content-center gap-4">
       {
         
         userData.map((data)=>(

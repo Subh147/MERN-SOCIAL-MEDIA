@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { jwtDecode } from "jwt-decode"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -13,7 +14,7 @@ const Create = () => {
   const[userPic,setUserPic]=useState("")
   const [cookies, setCookie,removeCookie] = useCookies(['token']);
   const [file,setFile] = useState("")
-
+  const navigate = useNavigate()
    
 
   useState(()=>{
@@ -71,7 +72,7 @@ const Create = () => {
     .then(()=>{
       alert("POST CREATED SUCCESS")
       // console.log(cookies)
-      
+      navigate("/home")
     })
     .catch((err)=>{
       alert("POST NOT CREATED",err)
@@ -148,7 +149,7 @@ const Create = () => {
 <div className="flex place-content-center">
 <button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium text-2xl  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" onClick={handleSubmit}>Get Notished</button>
 
-<button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium text-2xl  rounded-lg  px-5 py-2.5 text-center me-2 mb-2" onClick={handleVideo}>Handle Video</button>
+
 </div>
 
                     
