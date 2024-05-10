@@ -122,19 +122,48 @@ const Home = () => {
   
 
   return (
+    <>
+    
     <div className='h-[100%]'>
     
-      <section className='mx-80 flex '>
+    
+      <section className='mx-80 flex mt-[-25px] '>
       <div className='flex gap-3 pt-10 pl-28'>
         
-          
-        <img src={robot} alt="" className='w-36 h-60 rounded-xl' />
-        <img src={girl} alt="" className='w-36 h-60 rounded-xl' />
-        <img src={rabbit} alt="" className='w-36 h-60 rounded-xl' />
-        <img src={girl1} alt="" className='w-36 h-60 rounded-xl' />
+      <div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat rounded-xl cursor-pointer">
+  <img
+    src={robot}
+    className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110"
+    alt="Louvre" />
+</div>
+
+<div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat rounded-xl cursor-pointer">
+  <img
+    src={girl}
+    className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110"
+    alt="Louvre" />
+</div>
+
+<div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat rounded-xl cursor-pointer">
+  <img
+    src={rabbit}
+    className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110"
+    alt="Louvre" />
+</div>
+
+<div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat rounded-xl cursor-pointer">
+  <img
+    src={girl1}
+    className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110 "
+    alt="Louvre" />
+</div>
+
+
+        
         
       </div>
         <div className='fixed right-0 top-0 pt-16  h-[100%] w-80 text-white'>
+        
         
         <h1 className='text-2xl'>Online</h1>
         <div className='h-48 overflow-y-auto'>
@@ -147,7 +176,7 @@ const Home = () => {
             <h1 className='text-2xl'>Birthdays</h1>
             <div className='flex mt-4 gap-4'>
              <FaGift className='text-3xl text-pink-500'/>
-             <p>Tanushree Gharami has their Birthday today</p>
+             <p className='text-black'>Tanushree Gharami has their Birthday today</p>
             </div>
           </div>
           <hr className='my-6'/>
@@ -174,7 +203,7 @@ const Home = () => {
         </div>
       </section>
         
-      <div className='h-44 w-[500px] bg-slate-700 flex ml-[350px] my-16 rounded-xl'>
+      <div className='h-44 w-[500px] bg-sky-900 shadow-2xl shadow-gray-700 flex ml-[350px] my-4 rounded-xl'>
       <div className=''>
       <div className='flex mx-6 my-6 gap-2'>
         <img className='w-[40px] h-[40px] rounded-full' src="https://imgs.search.brave.com/IZ7MIsbaofm0u4O4wocApdZPKT_2d0pLsAfOl1Nr0Bg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by91/c2VyLXByb2ZpbGUt/ZnJvbnQtc2lkZV8x/ODcyOTktMzk1OTUu/anBnP3NpemU9NjI2/JmV4dD1qcGc" alt="" />
@@ -211,7 +240,7 @@ const Home = () => {
         postData.reverse().map((elem,key)=>(
           // eslint-disable-next-line react/jsx-key
           <>
-          <div key={key} className="bg-slate-900 border rounded-sm w-[500px] my-10">
+          <div key={key} className="bg-sky-700 shadow-2xl shadow-gray-600 rounded-xl w-[500px] mt-4 pb-2">
           {
             sharedUser &&
             <div className="flex items-center px-4 py-3 ">
@@ -278,6 +307,8 @@ const Home = () => {
       </section>
       
     </div>
+
+    </>
   )
 }
 

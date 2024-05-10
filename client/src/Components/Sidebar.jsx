@@ -21,7 +21,8 @@ const Sidebar = () => {
     const[userProfilePic,setUserProfilePic]=useState("");
     const [cookies, setCookie,removeCookie] = useCookies(['token']);
     const[savepostLength,setSavepostLength] = useState("")
-    const[localstorageusername,setlocalStorageusername]  = useState('') 
+    const[localstorageusername,setlocalStorageusername]  = useState('')
+    
     console.log(cookies)
 
     
@@ -71,8 +72,10 @@ const Sidebar = () => {
 
     // console.log(username,useremail)
 
+    const indicateClick = (data) =>{
+        console.log(data.target)
+    }
     
-
   return (
     <>
 
@@ -83,7 +86,7 @@ const Sidebar = () => {
     </head>
     <body className="bg-blue 600 ">    
         <div className="container flex flex-col mx-auto bg-blue 600">
-            <aside className="group/sidebar flex flex-col shrink-0 lg:w-[300px] w-[250px] transition-all duration-300 ease-in-out m-0 fixed z-40 inset-y-0 left-0 bg-slate-900  sidenav fixed-start loopple-fixed-start border-r-2" id="sidenav-main"><div className="flex shrink-0 px-8 items-center justify-between h-[96px]">
+            <aside className="group/sidebar flex flex-col shrink-0 lg:w-[300px] w-[250px] transition-all duration-300 ease-in-out m-0 fixed z-40 inset-y-0 left-0 bg-lime-200   sidenav fixed-start loopple-fixed-start border-r-2 shadow-2xl shadow-gray-600" id="sidenav-main"><div className="flex shrink-0 px-8 items-center justify-between h-[96px]">
             <a className="transition-colors duration-200 ease-in-out" href="https://www.loopple.com">
             <img alt="Logo" src={logo} className="inline"/>
             </a>
@@ -99,7 +102,7 @@ const Sidebar = () => {
                 </div>
             </div>
             <div className="mr-2 ">
-                <a href="javascript:void(0)" className="dark:hover:text-primary hover:text-primary transition-colors duration-200 ease-in-out text-[1.075rem] font-medium dark:text-neutral-400/90 text-secondary-inverse">{username ? username : `user`}</a>
+                <a href="javascript:void(0)" className="dark:hover:text-primary hover:text-primary transition-colors duration-200 ease-in-out text-[1.075rem] font-medium dark:text-sky-700 text-secondary-inverse">{username ?`Welcome ${username} `: `Welcome user`}</a>
                 {/* <span className="text-secondary-dark dark:text-stone-500 font-medium block text-[0.85rem]">{useremail ? useremail :"userEmail"}</span> */}
             </div>
             </div>
@@ -119,11 +122,11 @@ const Sidebar = () => {
             <div className="flex flex-col w-full font-medium ">
 
             {/* <!-- menu item --> */}
-            <NavLink to="/" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100" >
+            <NavLink to="/" className="hover:bg-slate-400  rounded-xl transition ease-in-out delay-100" >
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
                 <IoHomeSharp className="text-2xl"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl text-gray-300">Home</h1>
+                <h1 className="text-2xl  hover:text-gray-700 transition ease-in-out">Home</h1>
                 </span>
             </NavLink>
 
@@ -133,27 +136,29 @@ const Sidebar = () => {
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
                 <MdAddCircleOutline className="text-2xl "/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl text-gray-300">Create Post</h1>
+                <h1 className="text-2xl ">Create Post</h1>
                 </span>
             </NavLink>
 
-            
+            <NavLink to="/search" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
+                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3 ">
+                <FaSearch className="text-2xl"/>
+                {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
+                <h1 className="hover:text-white text-2xl ">Search</h1>
+                </span>
+            </NavLink>
 
 
             {/* <!-- menu item --> */}
-            <NavLink to="/search" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
-                <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
-                <FaSearch className="text-2xl"/>
-                {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl text-gray-300">Search</h1>
-                </span>
-            </NavLink>
+           
+
+            
 
             <NavLink to="/private2" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
                 <CgProfile className="text-2xl"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl text-gray-300">Profile</h1>
+                <h1 className="text-2xl ">Profile</h1>
                 </span>
             </NavLink>
 
@@ -161,7 +166,7 @@ const Sidebar = () => {
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
                 <FaBookmark className="text-2xl"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl text-gray-300">Save Posts</h1>
+                <h1 className="text-2xl ">Save Posts</h1>
                 </span>
             </NavLink>
 
@@ -169,7 +174,7 @@ const Sidebar = () => {
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
                 <FaFacebookMessenger className="text-2xl"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl text-gray-300">Messenger</h1>
+                <h1 className="text-2xl ">Messenger</h1>
                 </span>
             </NavLink>
            
@@ -187,13 +192,22 @@ const Sidebar = () => {
             
 
             {
-                !username ? <div className=" flex gap-7 mx-10 my-4 fixed bottom-0">
-            <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg  px-5 py-2.5 text-center me-2 mb-2 text-2xl" onClick={handleNavigate}>Sign In</button>
-            <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg  px-5 py-2.5 text-center me-2 mb-2 text-2xl" onClick={handleNavigate2}>Log In</button>
-            </div> : <div className=" flex gap-7 mx-24 my-4 fixed bottom-0 place-content-center">
-            <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg  px-5 py-2.5 text-center me-2 mb-2 text-2xl" onClick={handleLogout}>Log Out</button>
-            </div>
+                !username ? <div className=" flex gap-7 mx-8 my-20 fixed bottom-0">
+                <button onClick={handleNavigate} className="before:ease relative h-12 w-32 overflow-hidden border border-teal-300 text-sky-900 shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-sky-900 before:duration-300 hover:text-white hover:shadow-blue-500 hover:before:h-64 hover:before:-translate-y-32">
+                <span className="relative z-10 font-bold " >Sign In</span>
+                 </button>
+                 <button onClick={handleNavigate2} className="before:ease relative h-12 w-32 overflow-hidden border border-teal-300 text-sky-900 shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-sky-900 before:duration-300 hover:text-white hover:shadow-blue-500 hover:before:h-64 hover:before:-translate-y-32">
+                <span className="relative z-10 font-bold" >Log In</span>
+                 </button>
+            </div> :
+             <div className="mx-28 my-20 fixed bottom-0">
+             <button onClick={handleLogout} className=" before:ease relative h-12 w-32 overflow-hidden border border-red-500 text-red-800 shadow-2xl transition-all before:absolute before:top-1/2 before:h-0 before:w-64 before:origin-center before:-translate-x-20 before:rotate-45 before:bg-red-500 before:duration-300 hover:text-white hover:shadow-blue-500 hover:before:h-64 hover:before:-translate-y-32">
+                <span className="relative z-10 font-bold" >Log Out</span>
+                 </button>
+             </div>
             }
+
+            
 
         </aside>
         </div>

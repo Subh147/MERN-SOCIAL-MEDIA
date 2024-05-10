@@ -24,7 +24,7 @@ const OnlineCard = () => {
         loginUsers.map((users,index)=>(
             <>
             <div key={index} className="pr-2 my-2">
-  <div className="cursor-default select-none space-y-2 rounded-sm bg-[#f2f3f5] p-4 dark:bg-[#2b2d31] shadow-xl">
+  <div className="cursor-default select-none space-y-2 rounded-sm bg-[#f2f3f5] p-4 dark:bg-sky-900 shadow-2xl">
     <div className="flex items-center justify-between gap-16">
       <div className="flex items-center gap-4">
         <img src={`../public/images/${users.profilePic}`} alt="Discord" className="h-14 w-14 rounded-xl" draggable="false" />
@@ -33,8 +33,8 @@ const OnlineCard = () => {
           <div className="flex items-center justify-between gap-3 text-xs py-2">
             <p className="text-[#80848e]">
               <span className="inline-flex"
-                ><svg className="h-[11px] w-[11px] fill-[#23a559] " strokeWidth="0" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 23.05C127.5 23.05 23.05 127.5 23.05 256S127.5 488.9 256 488.9 488.9 384.5 488.9 256 384.5 23.05 256 23.05z"></path></svg
-              ><p className="ml-2 text-s">Online</p></span>
+                ><svg className="h-[11px] w-[11px] fill-[#02fb6a] " strokeWidth="0" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 23.05C127.5 23.05 23.05 127.5 23.05 256S127.5 488.9 256 488.9 488.9 384.5 488.9 256 384.5 23.05 256 23.05z"></path></svg
+              ><p className="ml-2 text-s text-white">Online</p></span>
               
             </p>
           </div>
