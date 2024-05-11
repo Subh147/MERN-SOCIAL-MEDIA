@@ -22,9 +22,13 @@ const Sidebar = () => {
     const [cookies, setCookie,removeCookie] = useCookies(['token']);
     const[savepostLength,setSavepostLength] = useState("")
     const[localstorageusername,setlocalStorageusername]  = useState('')
+    const[animate,setAnimate]=useState(false)
     
     console.log(cookies)
 
+    const animation = () =>{
+        setAnimate(!animate)
+    }
     
 
     const navigate = useNavigate()
@@ -88,7 +92,7 @@ const Sidebar = () => {
         <div className="container flex flex-col mx-auto bg-blue 600">
             <aside className="group/sidebar flex flex-col shrink-0 lg:w-[300px] w-[250px] transition-all duration-300 ease-in-out m-0 fixed z-40 inset-y-0 left-0 bg-lime-200   sidenav fixed-start loopple-fixed-start border-r-2 shadow-2xl shadow-gray-600" id="sidenav-main"><div className="flex shrink-0 px-8 items-center justify-between h-[96px]">
             <a className="transition-colors duration-200 ease-in-out" href="https://www.loopple.com">
-            <img alt="Logo" src={logo} className="inline"/>
+            <img alt="Logo" src={logo} className="inline "/>
             </a>
         </div>
 
@@ -98,11 +102,11 @@ const Sidebar = () => {
             <div className="flex items-center mr-5 ">
             <div className="mr-5">
                 <div className="inline-block relative shrink-0 cursor-pointer rounded-[.95rem]">
-                <img className="w-[40px] h-[40px] shrink-0 inline-block rounded-[.95rem]" src={userProfilePic ? `../public/images/${userProfilePic}` : `https://imgs.search.brave.com/IZ7MIsbaofm0u4O4wocApdZPKT_2d0pLsAfOl1Nr0Bg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by91/c2VyLXByb2ZpbGUt/ZnJvbnQtc2lkZV8x/ODcyOTktMzk1OTUu/anBnP3NpemU9NjI2/JmV4dD1qcGc`} alt="avatar image"/>
+                <img className="w-[40px] h-[40px] shrink-0 inline-block rounded-[.95rem] shadow-inner shadow-black" src={userProfilePic ? `../public/images/${userProfilePic}` : `https://imgs.search.brave.com/IZ7MIsbaofm0u4O4wocApdZPKT_2d0pLsAfOl1Nr0Bg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by91/c2VyLXByb2ZpbGUt/ZnJvbnQtc2lkZV8x/ODcyOTktMzk1OTUu/anBnP3NpemU9NjI2/JmV4dD1qcGc`} alt="avatar image"/>
                 </div>
             </div>
             <div className="mr-2 ">
-                <a href="javascript:void(0)" className="dark:hover:text-primary hover:text-primary transition-colors duration-200 ease-in-out text-[1.075rem] font-medium dark:text-sky-700 text-secondary-inverse">{username ?`Welcome ${username} `: `Welcome user`}</a>
+                <a href="javascript:void(0)" className="dark:hover:text-primary hover:text-primary transition-colors duration-200 ease-in-out text-xl font-medium dark:text-sky-700 text-secondary-inverse ">{username ?`Welcome ${username} `: `Welcome user`}</a>
                 {/* <span className="text-secondary-dark dark:text-stone-500 font-medium block text-[0.85rem]">{useremail ? useremail :"userEmail"}</span> */}
             </div>
             </div>
@@ -122,29 +126,29 @@ const Sidebar = () => {
             <div className="flex flex-col w-full font-medium ">
 
             {/* <!-- menu item --> */}
-            <NavLink to="/" className="hover:bg-slate-400  rounded-xl transition ease-in-out delay-100" >
+            <NavLink to="/" className="hover:bg-slate-400  rounded-xl transition ease-in-out delay-100 mb-2" >
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
-                <IoHomeSharp className="text-2xl"/>
+                <IoHomeSharp className="text-2xl" id="logo"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl  hover:text-gray-700 transition ease-in-out">Home</h1>
+                <h1 className="text-2xl  hover:text-orange-500 transition ease-in-out">Home</h1>
                 </span>
             </NavLink>
 
 
             {/* <!-- menu item --> */}
-            <NavLink to="/private" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
+            <NavLink to="/private" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100 mb-2" onClick={animation}>
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
-                <MdAddCircleOutline className="text-2xl "/>
+                <MdAddCircleOutline className="text-2xl " id="logo"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl ">Create Post</h1>
+                <h1 className="text-2xl hover:text-orange-500 transition ease-in-out">Create Post</h1>
                 </span>
             </NavLink>
 
-            <NavLink to="/search" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
+            <NavLink to="/search" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100 mb-2">
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3 ">
-                <FaSearch className="text-2xl"/>
+                <FaSearch className="text-2xl" id="logo"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="hover:text-white text-2xl ">Search</h1>
+                <h1 className="text-2xl  hover:text-orange-500 transition ease-in-out">Search</h1>
                 </span>
             </NavLink>
 
@@ -154,27 +158,27 @@ const Sidebar = () => {
 
             
 
-            <NavLink to="/private2" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
+            <NavLink to="/private2" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100 mb-2">
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
-                <CgProfile className="text-2xl"/>
+                <CgProfile className="text-2xl" id="logo"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl ">Profile</h1>
+                <h1 className="text-2xl  hover:text-orange-500 transition ease-in-out">Profile</h1>
                 </span>
             </NavLink>
 
-            <NavLink to="/private3" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
+            <NavLink to="/private3" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100 mb-2">
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
-                <FaBookmark className="text-2xl"/>
+                <FaBookmark className="text-2xl" id="logo"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl ">Save Posts</h1>
+                <h1 className="text-2xl  hover:text-orange-500 transition ease-in-out">Save Posts</h1>
                 </span>
             </NavLink>
 
-            <NavLink to="/private4" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100">
+            <NavLink to="/private4" className="hover:bg-slate-400 rounded-xl transition ease-in-out delay-100 mb-2">
                 <span className="select-none flex items-center px-4 py-[.775rem] cursor-pointer my-[.4rem] rounded-[.95rem] gap-3">
-                <FaFacebookMessenger className="text-2xl"/>
+                <FaFacebookMessenger className="text-2xl" id="logo"/>
                 {/* <NavLink to="/search" className="active:text-blue-600 text-2xl   ">Search</NavLink> */}
-                <h1 className="text-2xl ">Messenger</h1>
+                <h1 className="text-2xl  hover:text-orange-500 transition ease-in-out">Messenger</h1>
                 </span>
             </NavLink>
            

@@ -177,10 +177,12 @@ app.get("/api/loginuser",(req,res)=>{
 
 app.post("/api/search",(req,res)=>{
   const {searchQuerry} = req.body
-  console.log(searchQuerry)
+  const username = searchQuerry
+  console.log(username)
 
-  if(searchQuerry){
-    userRegModel.find({username:searchQuerry})
+  if(username){
+    const regex = new RegExp(username, 'i');
+    userRegModel.find({name: regex }).where("username")
     .then((e)=>{
       if(e){
         console.log("reasult",e)

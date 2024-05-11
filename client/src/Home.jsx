@@ -11,6 +11,7 @@ import OnlineCard from './Components/OnlineCard'
 import { FaVideo,FaSmile } from "react-icons/fa"
 import { IoMdPhotos } from "react-icons/io";
 import { FaGift } from "react-icons/fa6";
+import Modal from './Components/Modal'
 
 
 
@@ -22,9 +23,17 @@ const Home = () => {
   const [username,setUsername] = useState("")
   const [color,setColor] = useState(false)
   let [sharedUser,setSharedUser] = useState("")
+  const[toggle,setToggle]=useState(false)
+  const[seeStory,setSeeStory] = useState("")
   
   
-  
+  const handleToggle = (img) =>{
+    setToggle(!toggle)
+    setSeeStory(img)
+    console.log(seeStory)
+}
+
+
 
   // --------------------------
   // const [postname,setPostname] = useState("")
@@ -124,9 +133,7 @@ const Home = () => {
   return (
     <>
     
-    <div className='h-[100%]'>
-    
-    
+    <div  className='h-[100%]'>
       <section className='mx-80 flex mt-[-25px] '>
       <div className='flex gap-3 pt-10 pl-28'>
         
@@ -134,28 +141,36 @@ const Home = () => {
   <img
     src={robot}
     className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110"
-    alt="Louvre" />
+    alt="Louvre" 
+    onClick={()=>handleToggle(robot)}
+    />
 </div>
 
 <div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat rounded-xl cursor-pointer">
   <img
     src={girl}
     className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110"
-    alt="Louvre" />
+    alt="Louvre" 
+    onClick={()=>handleToggle(girl)}
+    />
 </div>
 
 <div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat rounded-xl cursor-pointer">
   <img
     src={rabbit}
     className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110"
-    alt="Louvre" />
+    alt="Louvre" 
+    onClick={()=>handleToggle(rabbit)}
+    />
 </div>
 
 <div className="relative max-w-xs overflow-hidden bg-cover bg-no-repeat rounded-xl cursor-pointer">
   <img
     src={girl1}
     className="w-36 h-60 transition rounded-xl duration-300 ease-in-out hover:scale-110 "
-    alt="Louvre" />
+    alt="Louvre" 
+    onClick={()=>handleToggle(girl1)}
+    />
 </div>
 
 
@@ -234,6 +249,49 @@ const Home = () => {
 
 
 
+        <div>
+      
+
+{/* <!-- Modal toggle --> */}
+
+{/* <!-- Main modal --> */}
+{
+    toggle && (
+<div id="default-modal" tabindex="-1" aria-hidden="true" className=" overflow-y-auto overflow-x-hidden fixed flex my-auto   z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm ">
+    <div className="relative p-4 w-full max-w-2xl max-h-full">
+        {/* <!-- Modal content --> */}
+        <div className="relative bg-white  shadow dark:bg-gray-700">
+            {/* <!-- Modal header --> */}
+            <div className="flex items-center rounded-lg justify-between p-4 md:p-5  dark:border-gray-600">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Story
+                </h3>
+                <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900  text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal" onClick={handleToggle}>
+                    <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor"  stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span className="sr-only">Close modal</span>
+                </button>
+            </div>
+            {/* <!-- Modal body --> */}
+            <div className="h-full w-full">
+            <img
+    src={seeStory}
+    className="w-full h-full "
+    alt="Louvre" />
+            </div>
+            {/* <!-- Modal footer --> */}
+        </div>
+    </div>
+</div>
+
+    )
+}
+
+    </div>
+
+
+
       <section className='pb-10 mx-[350px] '>
       {
         
@@ -248,7 +306,7 @@ const Home = () => {
       <div className="ml-3 ">
       <div className='flex gap-1'>
         <span className=" font-semibold antialiased block leading-tight text-xl text-white" >{elem.sharedUser} </span>
-        <span className="text-xl font-semibold antialiased block leading-tight text-blue-600">{elem.sharedUser ? <MdVerified/>: "" } </span>
+        <span className="text-xl font-semibold antialiased block leading-tight text-blue-600">{elem.sharedUser ? <MdVerified className='text-lime-200'/>: "" } </span>
       </div>
       <span className="text-white text-xs block mt-1">{elem.sharedTime}</span>
       </div>
@@ -267,7 +325,7 @@ const Home = () => {
       <div className="ml-3 ">
       <div className='flex gap-1'>
         <span className=" font-semibold antialiased block leading-tight text-xl text-white" >{elem.userName} </span>
-        <span className="text-xl font-semibold antialiased block leading-tight text-blue-600"><MdVerified/> </span>
+        <span className="text-xl font-semibold antialiased block leading-tight text-blue-600"><MdVerified className='text-lime-200'/> </span>
       </div>
         <span className="text-white text-xs block mt-1">{elem.date}</span>
         
@@ -275,7 +333,7 @@ const Home = () => {
     </div>
     <div className='flex place-content-center'>
     <div className="flex flex-col">
-    <img src={`../public/images/${elem.postImg}`} alt=""  />
+    <img src={`../public/images/${elem.postImg}`} alt="" />
     <span className="text-sm font-semibold antialiased block leading-tight my-2 mx-2 text-xl text-white" >{elem.postName}</span>
     </div>
     </div>
