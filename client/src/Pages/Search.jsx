@@ -34,7 +34,7 @@ const Search = () => {
         <span className="w-auto flex justify-end items-center text-grey p-2">
             {/* <i className="material-icons text-3xl">search</i> */}
         </span>
-        <input className="w-full rounded p-2" type="text" placeholder="Try 'all'" name="searchQuerry" onChange={(e)=>handleButton(e)}/>
+        <input className="w-full rounded p-2" type="text" placeholder="Try 'all'" name="searchQuerry" onChange={handleButton}/>
         {/* <button className="bg-red-light hover:bg-red-lighter rounded text-white p-2 pl-4 pr-4" onClick={handleButton}>
                 <p className="font-semibold text-xl">Search</p>
         </button> */}

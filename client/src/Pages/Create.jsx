@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
+
 const Create = () => {
 
   const[img,setImg]=useState("")
@@ -127,9 +128,12 @@ const Create = () => {
   return (
     <div className="h-[100vh] w-[40vw] ">
       {/* <!-- component --> */}
+     
+      
+
 <div className="bg-grey-lighter min-h-screen flex flex-col w-[60vw]  pl-96 ">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2 ">
-                <div className="bg-sky-700 px-6 py-8 rounded text-black w-full shadow-2xl shadow-gray-600 " >
+                <div className="bg-sky-700 px-6 py-8 rounded text-black w-full shadow-2xl shadow-gray-800" >
                     <h1 className="mb-8 text-3xl text-center">Create a Post</h1>
 
                     <input 
@@ -152,17 +156,34 @@ const Create = () => {
 <a href="#_" className="relative inline-block px-4 py-3 h-12 text-center text-xl w-40 font-medium group" onClick={handleSubmit}>
 <span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
 <span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
-<span className="relative text-black group-hover:text-white">Create Post</span>
+<span className="relative text-black group-hover:text-white">Post</span>
 </a>
 </div>
 
+
+
+
                     
+<ul className="circles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
                 </div>
 
                 
             </div>
         </div>
     </div>
+
+    
   );
 };
 

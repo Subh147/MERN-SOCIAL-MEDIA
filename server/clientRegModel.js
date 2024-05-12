@@ -12,6 +12,10 @@ const userRegSchema = new mongoose.Schema({
     isLoggedIn:{
         type : Boolean , 
         default : false
+    },
+    bio:{
+        type:String,
+        default:"Your bio show here and you can also update your bio"
     }
 })
 

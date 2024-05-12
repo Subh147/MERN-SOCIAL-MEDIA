@@ -7,35 +7,51 @@ const Profile = () => {
 
   const [username,setUsername] =useState("")
   const [userpic,setUserpic] =useState("")
+  const [bio,setbio] =useState("")
   const [post,setPost] =useState([])
   const [postnumber,setPostNumber] =useState(0)
+  const [toggle,setToggle]=useState(false)
+  const [userBio,setUserBio]=useState("")
 
-  
+  const handleBio = () =>{
+    console.log(userBio)
+    axios.post("http://localhost:3000/api/updateBio",{username,userBio})
+    .then((e)=>{
+      console.log("update Bio",e.data)
+      window.location.reload()
+    })
+    
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
+
   useEffect(()=>{
     setUsername(localStorage.getItem('username'))
     axios.post("http://localhost:3000/api/userPic",{username})
     .then((e)=>{
       console.log("this is for profilepic",e.data)
       setUserpic(e.data.profilePic)
+      setbio(e.data.bio)
     })
     
     .catch((err)=>{
       // console.log(err)
     })
     
-  },[username])
+  },[username,bio])
 
   useEffect(()=>{
     axios.post("http://localhost:3000/api/userpost",{username})
     .then((e)=>{
-      console.log("Success to get user post",e.data)
+      // console.log("Success to get user post",e.data)
       setPost(e.data)
       setPostNumber(e.data.length)
     })
     .catch((err)=>{
       console.log(err)
     })
-  },[username])
+  },[username,post])
   
   const sendmessaage = (message) =>{
     alert(message)
@@ -57,10 +73,64 @@ const Profile = () => {
       })
   }
 
+  const handleDelete = (post) =>{
+    const postName = post.postName;
+    console.log(postName)
+    axios.post("http://localhost:3000/api/deletePost",{postName,username})
+      .then((e)=>{
+        console.log("postId send success",e)
+        // alert("post deleted")
+      })
+      .catch((err)=>{
+        console.log("error",err)
+      })
+  }
+
+  const handleButton = () =>{
+    setToggle(!toggle)
+  }
+
 
   return (
     <div className='pt-10'>
       
+
+      {
+    toggle && (
+<div id="default-modal" tabindex="-1" aria-hidden="true" className=" overflow-y-auto overflow-x-hidden fixed flex my-auto   z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full backdrop-blur-sm ">
+    <div className="relative p-4 w-full max-w-2xl max-h-full">
+        {/* <!-- Modal content --> */}
+        <div className="relative bg-white  shadow dark:bg-gray-700">
+            {/* <!-- Modal header --> */}
+            <div className="flex items-center rounded-lg justify-between p-4 md:p-5  dark:border-gray-600">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Edit Bio
+                </h3>
+                <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900  text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal" onClick={handleButton}>
+                    <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor"  stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span className="sr-only">Close modal</span>
+                </button>
+            </div>
+            {/* <!-- Modal body --> */}
+            <div className='px-8 h-[305px] py-2 shadow-2xl shadow-gray-600'>
+            <div className="h-full w-full flex flex-col">
+            {/* <input type=""  /> */}
+            <textarea name="" id="" cols="30" rows="180" className='bg-slate-500 text-4xl' onChange={(e)=>setUserBio(e.target.value)}></textarea>
+            <div className='my-4 mx-auto'>
+            <button className='bg-yellow-600 px-4 py-2 ' onClick={handleBio}>Submit</button>
+            </div>
+            </div>
+            </div>
+            {/* <!-- Modal footer --> */}
+        </div>
+    </div>
+</div>
+
+    )
+}
+
 
       <div className='h-[100%] text-white'>
       
@@ -75,29 +145,31 @@ const Profile = () => {
           <h1 className='text-3xl'>{username}</h1>
           <RiVerifiedBadgeFill className='text-3xl text-blue-800'/>
           </div>
-          <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Edit Profile</button>
+          <button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" onClick={handleButton}>Edit Bio</button>
           </div>
           <div className='flex gap-5 my-2'>
             <p>Posts {postnumber}</p>
             <p>Followers 155</p>
             <p>Following  74</p>
           </div>
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eaque, dolores illo quasi assumenda laudantium. Aperiam inventore reiciendis laudantium repudiandae quo nemo possimus reprehenderit molestiae, optio facilis cum corrupti, nulla maiores rerum architecto ratione, ea neque nam? Aliquid, adipisci debitis! Nulla eveniet, ea quia inventore culpa veniam, at ullam, aspernatur quae blanditiis vero a dolorem.</h2>
+            <h2>{bio}</h2>
           </div>
 
           
         </section>
-        <hr  className='mx-44 my-9'/>
+        <hr  className='mx-44 my-9 text-black'/>
         <section>
-          <div className='flex place-content-center'>
+          <div className='flex place-content-center text-black'>
             <h1>Posts</h1>
           </div>
           <div className='flex place-content-center py-8 gap-6 flex-wrap mx-44'>
           {
           post.map((post,index)=>(
-            
-            <div key={index} onClick={()=>handleClick(post)}>
+            <div key={index}>
+            <div  onClick={()=>handleClick(post)}>
             <img  src={`../public/images/${post.postImg}`} alt="" className='h-[400px]' />
+            </div>
+            <button onClick={()=>handleDelete(post)}>Delete post</button>
             </div>
           
         ))

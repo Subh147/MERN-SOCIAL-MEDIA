@@ -177,12 +177,12 @@ app.get("/api/loginuser",(req,res)=>{
 
 app.post("/api/search",(req,res)=>{
   const {searchQuerry} = req.body
-  const username = searchQuerry
-  console.log(username)
+  // const username = searchQuerry
+  console.log(searchQuerry)
+    const regex = new RegExp(searchQuerry, 'i');
 
-  if(username){
-    const regex = new RegExp(username, 'i');
-    userRegModel.find({name: regex }).where("username")
+  if(searchQuerry){
+    userRegModel.find({username:regex})
     .then((e)=>{
       if(e){
         console.log("reasult",e)
@@ -194,18 +194,18 @@ app.post("/api/search",(req,res)=>{
     })
     .catch((err)=>console.log("error in searching..",err))
   }
-  else{
-    userRegModel.find({})
-    .then((e)=>{
-      if(e){
-        console.log(e)
-        return res.json(e)
-      }else{
-        return res.send("No such user exists!")
-      }
-    })
-    .catch((err)=>console.log("error in searching..",err))
-  }
+  // else{
+  //   userRegModel.find({})
+  //   .then((e)=>{
+  //     if(e){
+  //       console.log(e)
+  //       return res.json(e)
+  //     }else{
+  //       return res.send("No such user exists!")
+  //     }
+  //   })
+  //   .catch((err)=>console.log("error in searching..",err))
+  // }
 
   
 })
@@ -225,6 +225,18 @@ app.post("/api/createPost",(req,res)=>{
         console.log("post not created",err)
       })
       // console.log(req.file.filename)
+})
+
+// -------------------------------------------Delete Post
+app.post("/api/deletePost",(req,res)=>{
+  const {postName,username} =req.body
+  postModel.findOneAndDelete({userName:username,postName})
+  .then((data)=>{
+    console.log("find user and post",data)
+  })
+  .catch(()=>{
+    console.log("Error in finding the post of the user",err)
+  })
 })
 
 // -------------------------------------------Share Post
@@ -364,6 +376,19 @@ app.post('/api/:postId/like', async (req, res) => {
 //   }
 // });
 
+//----------------------------------update user bio
+app.post('/api/updateBio',(req,res)=> {  
+  const {username,userBio} = req.body
+  console.log(req.body)
+  userRegModel.findOneAndUpdate({username:username,bio:userBio})
+  .then((posts)=>{
+    console.log("Bio updated",posts)
+    res.send(posts)
+  })
+  .catch(()=>{
+    console.log('error in getting posts')
+  })
+})
 
 //---------------------------------get user post
 app.post('/api/userpost/',(req,res)=> {  

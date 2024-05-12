@@ -25,7 +25,7 @@ function App() {
     <>
       <BrowserRouter>
     <Sidebar/>
-    <div className='lg:ml-[260px] lg:pl-10 bg-teal-300 '>
+    <div className='lg:ml-[260px] lg:pl-10  area'>
         <Routes>
         <Route path='/' element={<Home/>} />
           {/* <Route path='/createpost' element={<Create/>} /> */}
@@ -55,6 +55,8 @@ function App() {
 
           
         </Routes>
+
+        
       </div>
       </BrowserRouter>
         
