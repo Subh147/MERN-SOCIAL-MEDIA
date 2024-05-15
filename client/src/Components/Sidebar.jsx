@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import {jwtDecode} from "jwt-decode"
 import { useCookies } from 'react-cookie';
 import axios from "axios";
+import love from "../pic/Love_Heart_symbol.svg"
 
 
 
@@ -92,7 +93,7 @@ const Sidebar = () => {
         <div className="container flex flex-col mx-auto bg-blue 600">
             <aside className="group/sidebar flex flex-col shrink-0 lg:w-[300px] w-[250px] transition-all duration-300 ease-in-out m-0 fixed z-40 inset-y-0 left-0 bg-lime-200   sidenav fixed-start loopple-fixed-start border-r-2 shadow-2xl shadow-gray-600" id="sidenav-main"><div className="flex shrink-0 px-8 items-center justify-between h-[96px]">
             <a className="transition-colors duration-200 ease-in-out" href="https://www.loopple.com">
-            <img alt="Logo" src={logo} className="inline "/>
+            <img alt="Logo" src={logo} className="inline animate-wiggle animate-infinite animate-ease-out"/>
             </a>
         </div>
 
@@ -105,8 +106,9 @@ const Sidebar = () => {
                 <img className="w-[40px] h-[40px] shrink-0 inline-block rounded-[.95rem] shadow-inner shadow-black" src={userProfilePic ? `../public/images/${userProfilePic}` : `https://imgs.search.brave.com/IZ7MIsbaofm0u4O4wocApdZPKT_2d0pLsAfOl1Nr0Bg/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by91/c2VyLXByb2ZpbGUt/ZnJvbnQtc2lkZV8x/ODcyOTktMzk1OTUu/anBnP3NpemU9NjI2/JmV4dD1qcGc`} alt="avatar image"/>
                 </div>
             </div>
-            <div className="mr-2 ">
+            <div className="mr-2 flex gap-2">
                 <a href="javascript:void(0)" className="dark:hover:text-primary hover:text-primary transition-colors duration-200 ease-in-out text-xl font-medium dark:text-sky-700 text-secondary-inverse ">{username ?`Welcome ${username} `: `Welcome user`}</a>
+                <div><img src={love} className="w-6 pt-1 heartbeat" /></div>
                 {/* <span className="text-secondary-dark dark:text-stone-500 font-medium block text-[0.85rem]">{useremail ? useremail :"userEmail"}</span> */}
             </div>
             </div>
@@ -182,6 +184,10 @@ const Sidebar = () => {
                 </span>
             </NavLink>
            
+            <div className="animate-pulse">
+ Look Mom! I am pulsing!
+</div>
+
 
             
             </div>

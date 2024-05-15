@@ -135,9 +135,9 @@ const Profile = () => {
       <div className='h-[100%] text-white'>
       
         <section className='flex place-content-center mx-60 gap-10'>
-          
-            
-            <img src={ `../public/images/${userpic}` } alt="" className='h-80 rounded-full w-80' />
+           
+           
+            <img src={ `../public/images/${userpic}` } alt="" className='h-80 rounded-full w-80 shadow-2xl shadow-gray-600 hover:animate-ping hover:animate-once hover:animate-ease-linear' />
           
           <div className='py-20'>
           <div className='flex gap-96'>
@@ -165,11 +165,24 @@ const Profile = () => {
           <div className='flex place-content-center py-8 gap-6 flex-wrap mx-44'>
           {
           post.map((post,index)=>(
-            <div key={index}>
-            <div  onClick={()=>handleClick(post)}>
-            <img  src={`../public/images/${post.postImg}`} alt="" className='h-[400px]' />
+            <div key={index} className='hover:scale-110 transition-all duration-300  shadow-2xl shadow-black  bg-sky-700 rounded-xl pb-10 my-4 mx-4 cursor-pointer'>
+            <div  >
+            <img  src={`../public/images/${post.postImg}`} alt="" className='h-[400px] rounded-xl ' />
             </div>
-            <button onClick={()=>handleDelete(post)}>Delete post</button>
+            {/* <button onClick={()=>handleDelete(post)}>Delete post</button> */}
+            <div className='mt-10 flex flex-wrap place-content-center flex-col gap-2'>
+            <a href="#_" className="relative inline-block px-4 py-3 h-12 text-center text-xl w-40 font-medium group" onClick={()=>handleDelete(post)}>
+<span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+<span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+<span className="relative text-black group-hover:text-white">Delete Post</span>
+</a>
+
+<a href="#_" className="relative inline-block px-4 py-3 h-12 text-center text-xl w-30 font-medium group" onClick={()=>handleClick(post)}>
+<span className="absolute inset-0 w-full h-full transition duration-200 ease-out transform translate-x-1 translate-y-1 bg-black group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+<span className="absolute inset-0 w-full h-full bg-white border-2 border-black group-hover:bg-black"></span>
+<span className="relative text-black group-hover:text-white">Set ProfilePic</span>
+</a>
+            </div>
             </div>
           
         ))
