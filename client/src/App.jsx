@@ -14,6 +14,7 @@ import CheckPrivateRoute3 from './Pages/CheckPrivateRoute3'
 import CheckPrivateRoute4 from './Pages/CheckPrivateRoute4'
 import Savepost from './Pages/Savepost'
 import Messenger  from './Pages/Messenger'
+import Firstpage from './Pages/Firstpage'
 
 
 
@@ -27,7 +28,10 @@ function App() {
     <Sidebar/>
     <div className='lg:ml-[260px] lg:pl-10  area'>
         <Routes>
-        <Route path='/' element={<Home/>} />
+
+        <Route path='/' element={<Firstpage/>} />
+        <Route path='/home' element={<Home/>} />
+        
           {/* <Route path='/createpost' element={<Create/>} /> */}
           {/* <Route path='/profile' element={<Profile/>} /> */}
           <Route path='/search' element={<Search/>} />
